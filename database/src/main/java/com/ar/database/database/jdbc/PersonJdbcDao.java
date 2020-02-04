@@ -1,6 +1,5 @@
 package com.ar.database.database.jdbc;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +7,8 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.ar.database.database.controller.rowsmapper.PersonRowsMapper;
 import com.ar.database.database.entity.Person;
-import com.sun.jmx.snmp.Timestamp;
 
 @Repository
 public class PersonJdbcDao {
@@ -19,7 +18,7 @@ public class PersonJdbcDao {
 	
 	public List<Person> findAll(){
 		
-		return jdbcTemplate.query("select * from PERSON", new BeanPropertyRowMapper(Person.class));
+		return jdbcTemplate.query("select * from PERSON", new PersonRowsMapper());
 		
 		
 	}
@@ -27,7 +26,7 @@ public class PersonJdbcDao {
 	public Person findById(int id){
 		
 		return  jdbcTemplate.queryForObject("select * from PERSON where id =?", new Object[] {id},
-				new BeanPropertyRowMapper<Person>(Person.class));
+				new PersonRowsMapper());
 		
 		
 	}
