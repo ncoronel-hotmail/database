@@ -7,8 +7,8 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.ar.database.database.controller.rowsmapper.PersonRowsMapper;
 import com.ar.database.database.entity.Person;
+import com.ar.database.database.rowsmapper.PersonRowsMapper;
 
 @Repository
 public class PersonJdbcDao {

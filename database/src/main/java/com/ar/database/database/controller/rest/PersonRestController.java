@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ar.database.database.entity.Person;
+import com.ar.database.database.entity.PersonEntity;
 import com.ar.database.database.jdbc.PersonJdbcDao;
+import com.ar.database.database.jpa.PersonJpaRepository;
 
 @RestController
 public class PersonRestController {
@@ -23,6 +25,16 @@ public class PersonRestController {
 	
 	@Autowired
 	PersonJdbcDao personJdbcDao;
+	
+	@Autowired
+    PersonJpaRepository personJpaRepository;
+	
+	
+	@GetMapping("/jpa/personById")
+	public PersonEntity personByIdJpa(@RequestParam("id") int id){
+		
+		return personJpaRepository.findById(id);
+	}
 	
 	
 	@GetMapping("/listPerson")
@@ -61,8 +73,26 @@ public class PersonRestController {
 			return personJdbcDao.insertPerson(person);
 		}
 	
+	
+	@PostMapping("/insertJpaPerson")
+	public PersonEntity  insertJpaPerson(@RequestBody PersonEntity person) {
+		return personJpaRepository.insertPerson(person);
+	}
+
+	
 	@PutMapping("/updatePerson")
 	public int updatePerson(@RequestBody Person person) {
 		return personJdbcDao.insertPerson(person);
+	}
+	
+	@PutMapping("/updateJpaPerson")
+	public PersonEntity updateJpaPerson(@RequestBody PersonEntity person) {
+		return personJpaRepository.updatePerson(person);
+	}
+	
+	
+	@DeleteMapping("/deleteJpaPersonById")
+	public void deleteJpaPersonById(@RequestBody PersonEntity person) {
+		personJpaRepository.deletePerson(person);
 	}
 }

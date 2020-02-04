@@ -1,4 +1,4 @@
-package com.ar.database.database.controller.rowsmapper;
+package com.ar.database.database.rowsmapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
