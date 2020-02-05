@@ -4,12 +4,15 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "personEntity")
+@NamedQuery(name = "FIND_ALL",query = "select p from PersonEntity p")
 public class PersonEntity {
 
+	
 	@Id
 	@GeneratedValue
 	private int id;

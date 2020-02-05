@@ -43,6 +43,12 @@ public class PersonRestController {
 		return personJdbcDao.findAll();
 	}
 	
+	@GetMapping("/listJpaPerson")
+	public List<PersonEntity> getAllJáPerson(){
+		
+		return personJpaRepository.findAll();
+	}
+	
 	@GetMapping("/personById")
 	public Person personById(@RequestParam("id") int id){
 		
